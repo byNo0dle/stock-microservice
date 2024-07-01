@@ -16,6 +16,7 @@ public class StockController {
     @Autowired
     private StockRepository stockRepository;
 
+    @RequestMapping("/{code}")
     public boolean stockAvailable(@PathVariable String code) {
         Optional<StockEntity> stock = stockRepository.findByCode(code);
         stock.orElseThrow(() -> new RuntimeException("Cannot find the product " + code));
